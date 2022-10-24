@@ -53,5 +53,5 @@ func (current *pieceEntity) isLocationOccupiedBySelf(newRow int, newColumn int) 
 	if destination.isEmpty {
 		return false
 	}
-	return destination.piece.getColor() != current.getColor()
+	return destination.piece.getColor() == current.getColor()
 }
