@@ -8,7 +8,7 @@ func (current *rock) display() string {
 	if current.color == WHITE {
 		return "WR"
 	}
-	return "WB"
+	return "BR"
 }
 
 func (current *rock) isMoveValid(newRow int, newColumn int) bool {
