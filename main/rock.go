@@ -24,6 +24,41 @@ func (current *rock) isMoveValid(newRow int, newColumn int) bool {
 	if (verticalDist == 0 && horizontalDist == 0) || (horizontalDist != 0 && verticalDist != 0) {
 		return false
 	}
-	// TODO
+	// check if there is a piece in the way
+	if verticalDist != 0 {
+		// moving vertically
+		if newRow > current.getRow() {
+			// moving down
+			for i := current.getRow() + 1; i < newRow; i++ {
+				if !chessBoard.board[i][current.getColumn()].isEmpty {
+					return false
+				}
+			}
+		} else {
+			// moving up
+			for i := current.getRow() - 1; i > newRow; i-- {
+				if !chessBoard.board[i][current.getColumn()].isEmpty {
+					return false
+				}
+			}
+		}
+	} else {
+		// moving horizontally
+		if newColumn > current.getColumn() {
+			// moving right
+			for i := current.getColumn() + 1; i < newColumn; i++ {
+				if !chessBoard.board[current.getRow()][i].isEmpty {
+					return false
+				}
+			}
+		} else {
+			// moving left
+			for i := current.getColumn() - 1; i > newColumn; i-- {
+				if !chessBoard.board[current.getRow()][i].isEmpty {
+					return false
+				}
+			}
+		}
+	}
 	return true
 }
